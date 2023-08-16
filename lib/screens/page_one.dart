@@ -54,9 +54,18 @@ class Page_One extends StatelessWidget {
 
   _showAlertDialouge(context){
 
-    var alertDialouge = const AlertDialog(
-      title: Text("Thanks!"),
-      content: Text("Much need this Kind of LOVE"),
+    var alertDialouge =  AlertDialog(
+      title: const Text("Thanks!"),
+      content: const Text("Much need this Kind of LOVE"),
+      
+      actions: [
+        GestureDetector(
+          child: const Text('Close'),
+          onTap: () {
+            Navigator.pop(context);
+          },
+        )
+      ],
     );
 
     showDialog(context: context, builder: (BuildContext context) {
