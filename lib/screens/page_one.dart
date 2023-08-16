@@ -18,7 +18,8 @@ class Page_One extends StatelessWidget {
       body: MyBodyText(),
       floatingActionButton: FloatingActionButton(
         onPressed: () => {
-          _showFlutterToast()
+          _showAlertDialouge(context)
+          // _showFlutterToast()
           //_showSnackBar(context)
         },
         tooltip: 'Love',
@@ -49,6 +50,18 @@ class Page_One extends StatelessWidget {
         textColor: Colors.white,
         fontSize: 16.0
     );
+  }
+
+  _showAlertDialouge(context){
+
+    var alertDialouge = const AlertDialog(
+      title: Text("Thanks!"),
+      content: Text("Much need this Kind of LOVE"),
+    );
+
+    showDialog(context: context, builder: (BuildContext context) {
+      return alertDialouge;
+    });
   }
 }
 
