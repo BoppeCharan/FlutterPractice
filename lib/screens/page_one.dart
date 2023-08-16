@@ -1,6 +1,7 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 // ignore: camel_case_types
 class Page_One extends StatelessWidget {
@@ -16,7 +17,10 @@ class Page_One extends StatelessWidget {
       ),
       body: MyBodyText(),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => {_showSnackBar(context)},
+        onPressed: () => {
+          _showFlutterToast()
+          //_showSnackBar(context)
+        },
         tooltip: 'Love',
         hoverColor: Colors.amber,
         child: Icon(Icons.favorite_sharp),
@@ -32,6 +36,18 @@ class Page_One extends StatelessWidget {
         action: SnackBarAction(
             label: 'UNDO', onPressed: scaffold.hideCurrentSnackBar),
       ),
+    );
+  }
+  
+  _showFlutterToast() {
+    Fluttertoast.showToast(
+        msg: "Thanks for showing LOVE :->",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0
     );
   }
 }
