@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:hello_world/screens/page_two.dart';
 
 // ignore: camel_case_types
 class Page_One extends StatelessWidget {
@@ -39,7 +40,7 @@ class Page_One extends StatelessWidget {
       ),
     );
   }
-  
+
   _showFlutterToast() {
     Fluttertoast.showToast(
         msg: "Thanks for showing LOVE :->",
@@ -48,16 +49,13 @@ class Page_One extends StatelessWidget {
         timeInSecForIosWeb: 1,
         backgroundColor: Colors.red,
         textColor: Colors.white,
-        fontSize: 16.0
-    );
+        fontSize: 16.0);
   }
 
-  _showAlertDialouge(context){
-
-    var alertDialouge =  AlertDialog(
+  _showAlertDialouge(context) {
+    var alertDialouge = AlertDialog(
       title: const Text("Thanks!"),
       content: const Text("Much need this Kind of LOVE"),
-      
       actions: [
         GestureDetector(
           child: const Text('Close'),
@@ -68,9 +66,11 @@ class Page_One extends StatelessWidget {
       ],
     );
 
-    showDialog(context: context, builder: (BuildContext context) {
-      return alertDialouge;
-    });
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return alertDialouge;
+        });
   }
 }
 
@@ -104,8 +104,12 @@ class MyBodyText extends StatelessWidget {
           const SizedBox(height: 10),
           ElevatedButton(
             onPressed: () {
-              print("Entered Name is : " + controller.text);
-              controller.clear();
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          SecondScreen(name: controller.text)));
+              // controller.clear();
             },
             child: const Text("Get Name"),
           )
