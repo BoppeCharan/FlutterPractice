@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:flutter/material.dart';
 import 'package:hello_world/screens/stateful.dart';
 
@@ -15,10 +13,14 @@ class ThirdScreen extends StatelessWidget {
       backgroundColor: Colors.deepPurple.shade200,
       body: Column(
         children: [
-          ElevatedButton(onPressed: () {
-
-            Navigator.push(context, MaterialPageRoute(builder: (context) => const MyStateFulWidget()));
-          }, child: const Text("Go To Stateful Widget")),
+          ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const MyStateFulWidget()));
+              },
+              child: const Text("Go To Stateful Widget")),
           const SizedBox(height: 20),
           // createCustomListView(),
         ],
