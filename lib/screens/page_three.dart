@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 
 class ThirdScreen extends StatelessWidget {
@@ -9,9 +11,37 @@ class ThirdScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("ListView"),
       ),
-      backgroundColor: Colors.greenAccent,
-      body: createListView(),
+      backgroundColor: Colors.deepPurple.shade200,
+      body: createCustomListView(),
     );
+  }
+
+  List<String> generateList() {
+    List<String> itemsList =
+        List.generate(1000, (index) => "Product No is of $index");
+    return itemsList;
+  }
+
+  Widget createCustomListView() {
+    var generatedList = generateList();
+    var listView = ListView.builder(
+      itemBuilder: (context, index) {
+        return Card(
+          // decoration: const BoxDecoration(
+          //   border: Border(: BorderSide()),
+          // ),
+          color: Colors.deepOrange.shade200,
+          child: ListTile(
+            leading: Text("$index"),
+            title: Text(generatedList[index]),
+            subtitle: const Text("SubTitle of the Card"),
+            trailing: const Icon(Icons.access_time_filled_outlined),
+            onTap: () => print("Clicked on the item indexed at $index"),
+          ),
+        );
+      },
+    );
+    return listView;
   }
 
   Widget createListView() {
